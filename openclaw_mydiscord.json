@@ -83,7 +83,7 @@
   },
   "tools": {
     "profile": "messaging",
-    "allow": [],
+    "allow": ["read_files", "write_files"],
     "web": {
       "search": {
         "enabled": true,
@@ -130,21 +130,21 @@
             "mode": "off"
           },
           "guilds": {
-            "1478915631016448020": {
+            "1339015034805686313": {
               "channels": {
-                "1479995367754960946": {
+                "1498928883242766490": {
                   "enabled": true,
                   "requireMention": false
                 },
-                "1478915632723398961": {
+                "1498932757911437332": {
                   "enabled": true,
                   "requireMention": true
                 },
-                "1480106512813654036": {
+                "1498933989703024771": {
                   "enabled": true,
                   "requireMention": false
                 },
-                "1479933418966880318": {
+                "1498928838661636207": {
                   "enabled": true
                 }
               }
@@ -158,9 +158,9 @@
             "mode": "off"
           },
           "guilds": {
-            "1478915631016448020": {
+            "1339015034805686313": {
               "channels": {
-                "1478915632723398961": {
+                "1498932757911437332": {
                   "enabled": true,
                   "requireMention": true
                 }
