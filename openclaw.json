@@ -83,7 +83,7 @@
   },
   "tools": {
     "profile": "messaging",
-    "allow": [],
+    "allow": ["read_files", "write_files"],
     "web": {
       "search": {
         "enabled": true,
