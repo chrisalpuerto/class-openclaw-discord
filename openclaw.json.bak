@@ -1,22 +1,22 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.4.15",
-    "lastTouchedAt": "2026-04-18T18:44:28.991Z"
+    "lastTouchedVersion": "2026.5.3-1",
+    "lastTouchedAt": "2026-05-05T04:57:28.232Z"
   },
   "wizard": {
-    "lastRunAt": "2026-04-18T18:44:28.839Z",
-    "lastRunVersion": "2026.4.15",
+    "lastRunAt": "2026-05-05T04:57:28.099Z",
+    "lastRunVersion": "2026.5.3-1",
     "lastRunCommand": "onboard",
     "lastRunMode": "local"
   },
   "auth": {
     "profiles": {
       "default": {
-        "provider": "openrouter",
+        "provider": "google",
         "mode": "api_key"
       },
-      "openrouter:default": {
-        "provider": "openrouter",
+      "google:default": {
+        "provider": "google",
         "mode": "api_key"
       }
     }
@@ -24,25 +24,25 @@
   "models": {
     "mode": "merge",
     "providers": {
-      "openrouter": {
-        "baseUrl": "https://openrouter.ai/openai/v1",
-        "apiKey": "${OPENROUTER_API_KEY}",
-        "api": "openai-completions",
+      "google": {
+        "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+        "apiKey": "${GEMINI_API_KEY}",
+        "api": "google-generative-ai",
         "models": [
           {
-            "id": "openrouter/google/gemma-4-31b-it:free",
-            "name": "google-gemma-4-31b-it",
+            "id": "gemini-2.5-flash",
+            "name": "gemini-2.5-flash",
             "reasoning": true,
             "input": [
               "text"
             ],
             "cost": {
-              "input": 0.0015,
-              "output": 0.002,
+              "input": 0,
+              "output": 0,
               "cacheRead": 0,
               "cacheWrite": 0
             },
-            "contextWindow": 131072
+            "contextWindow": 1048576
           }
         ]
       }
@@ -51,18 +51,14 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/google/gemma-4-31b-it:free"
+        "primary": "google/gemini-2.5-flash"
       },
       "models": {
-        "openrouter/google/gemma-4-31b-it:free": {
-          "alias": "openrouter"
-        },
-        "openrouter/auto": {
-          "alias": "OpenRouter"
-        },
-        "openrouter/google/gemma-4-26b-a4b-it:free": {}
+        "google/gemini-2.5-flash": {
+          "alias": "google"
+        }
       },
-      "workspace": "/home/chuck/projects/ailiteracy-openclaw/workspace",
+      "workspace": "/Users/chrisalpuerto/Desktop/PROJECTS/test3openclaw/ailiteracy-openclaw/workspace/my_agent",
       "memorySearch": {
         "enabled": false
       },
@@ -77,10 +73,10 @@
       {
         "id": "my_agent",
         "name": "my_student_bot",
-        "workspace": "C:\\Users\\chuck\\Documents\\projects\\openclaw_multiagent\\workspace\\my_agent",
-        "agentDir": "C:\\Users\\chuck\\Documents\\projects\\openclaw_multiagent\\agents\\my_agent",
+        "workspace": "./workspace/my_agent",
+        "agentDir": "./agents/my_agent",
         "model": {
-          "primary": "openrouter/google/gemma-4-31b-it:free"
+          "primary": "google/gemini-2.5-flash"
         }
       }
     ]
@@ -88,8 +84,7 @@
   "tools": {
     "profile": "messaging",
     "allow": [
-      "web_search",
-      "read"
+
     ],
     "web": {
       "search": {
@@ -122,7 +117,7 @@
   "channels": {
     "discord": {
       "enabled": true,
-      "groupPolicy": "allowlist",
+      "groupPolicy": "open",
       "streaming": {
         "mode": "off"
       },
@@ -132,25 +127,25 @@
       "accounts": {
         "my_agent": {
           "token": "${DISCORD_BOT_TOKEN}",
-          "groupPolicy": "allowlist",
+          "groupPolicy": "open",
           "streaming": {
             "mode": "off"
           },
           "guilds": {
-            "1478915631016448020": {
+            "1339015034805686313": {
               "channels": {
-                "1479995367754960946": {
+                "1498928883242766490": {
                   "enabled": true,
                   "requireMention": false
                 },
-                "1478915632723398961": {
+                "1498932757911437332": {
                   "enabled": true,
                   "requireMention": true
                 },
-                "1480106512813654036": {
+                "1498933989703024771": {
                   "enabled": true
                 },
-                "1479933418966880318": {
+                "1498928838661636207": {
                   "enabled": true
                 }
               }
@@ -159,14 +154,14 @@
         },
         "default": {
           "token": "${DISCORD_BOT_TOKEN}",
-          "groupPolicy": "allowlist",
+          "groupPolicy": "open",
           "streaming": {
             "mode": "off"
           },
           "guilds": {
-            "1478915631016448020": {
+            "1339015034805686313": {
               "channels": {
-                "1478915632723398961": {
+                "1498932757911437332": {
                   "enabled": true,
                   "requireMention": true
                 }
@@ -190,7 +185,7 @@
   "gateway": {
     "port": 18789,
     "mode": "local",
-    "bind": "lan",
+    "bind": "loopback",
     "controlUi": {
       "enabled": true,
       "allowedOrigins": [
@@ -335,7 +330,7 @@
         "enabled": false
       },
       "discord": {
-        "enabled": false
+        "enabled": true
       },
       "bluebubbles": {
         "enabled": false
@@ -354,6 +349,12 @@
             "apiKey": "${EXA_API_KEY}"
           }
         }
+      },
+      "openrouter": {
+        "enabled": true
+      },
+      "discord": {
+        "enabled": true
       }
     }
   }

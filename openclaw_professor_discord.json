@@ -1,22 +1,22 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.4.15",
-    "lastTouchedAt": "2026-04-18T19:01:17.616Z"
+    "lastTouchedAt": "2026-05-05T06:33:56.733Z"
   },
   "wizard": {
-    "lastRunAt": "2026-04-18T19:01:17.313Z",
-    "lastRunVersion": "2026.4.15",
-    "lastRunCommand": "doctor",
+    "lastRunAt": "2026-05-05T04:57:28.099Z",
+    "lastRunVersion": "2026.5.3-1",
+    "lastRunCommand": "onboard",
     "lastRunMode": "local"
   },
   "auth": {
     "profiles": {
       "default": {
-        "provider": "openrouter",
+        "provider": "google",
         "mode": "api_key"
       },
-      "openrouter:default": {
-        "provider": "openrouter",
+      "google:default": {
+        "provider": "google",
         "mode": "api_key"
       }
     }
@@ -24,25 +24,25 @@
   "models": {
     "mode": "merge",
     "providers": {
-      "openrouter": {
-        "baseUrl": "https://openrouter.ai/openai/v1",
-        "apiKey": "${OPENROUTER_API_KEY}",
-        "api": "openai-completions",
+      "google": {
+        "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+        "apiKey": "${GEMINI_API_KEY}",
+        "api": "google-generative-ai",
         "models": [
           {
-            "id": "openrouter/google/gemma-4-31b-it:free",
-            "name": "google-gemma-4-31b-it",
-            "reasoning": true,
+            "id": "gemini-2.5-flash",
+            "name": "gemini-2.5-flash",
+            "reasoning": false,
             "input": [
               "text"
             ],
             "cost": {
-              "input": 0.0015,
-              "output": 0.002,
+              "input": 0,
+              "output": 0,
               "cacheRead": 0,
               "cacheWrite": 0
             },
-            "contextWindow": 131072
+            "contextWindow": 1048576
           }
         ]
       }
@@ -51,18 +51,14 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/google/gemma-4-31b-it:free"
+        "primary": "google/gemini-2.5-flash"
       },
       "models": {
-        "openrouter/google/gemma-4-31b-it:free": {
-          "alias": "openrouter"
-        },
-        "openrouter/auto": {
-          "alias": "OpenRouter"
-        },
-        "openrouter/google/gemma-4-26b-a4b-it:free": {}
+        "google/gemini-2.5-flash": {
+          "alias": "google"
+        }
       },
-      "workspace": "./workspace/my_agent",
+      "workspace": "/Users/chrisalpuerto/Desktop/PROJECTS/test3openclaw/ailiteracy-openclaw/workspace/my_agent",
       "memorySearch": {
         "enabled": false
       },
@@ -80,17 +76,14 @@
         "workspace": "./workspace/my_agent",
         "agentDir": "./agents/my_agent",
         "model": {
-          "primary": "openrouter/google/gemma-4-31b-it:free"
+          "primary": "google/gemini-2.5-flash"
         }
       }
     ]
   },
   "tools": {
     "profile": "messaging",
-    "allow": [
-      "web_search",
-      "read"
-    ],
+    "allow": [],
     "web": {
       "search": {
         "enabled": true,
@@ -122,7 +115,7 @@
   "channels": {
     "discord": {
       "enabled": true,
-      "groupPolicy": "allowlist",
+      "groupPolicy": "open",
       "streaming": {
         "mode": "off"
       },
@@ -132,7 +125,7 @@
       "accounts": {
         "my_agent": {
           "token": "${DISCORD_BOT_TOKEN}",
-          "groupPolicy": "allowlist",
+          "groupPolicy": "open",
           "streaming": {
             "mode": "off"
           },
@@ -148,7 +141,8 @@
                   "requireMention": true
                 },
                 "1480106512813654036": {
-                  "enabled": true
+                  "enabled": true,
+                  "requireMention": false
                 },
                 "1479933418966880318": {
                   "enabled": true
@@ -159,7 +153,7 @@
         },
         "default": {
           "token": "${DISCORD_BOT_TOKEN}",
-          "groupPolicy": "allowlist",
+          "groupPolicy": "open",
           "streaming": {
             "mode": "off"
           },
@@ -190,7 +184,7 @@
   "gateway": {
     "port": 18789,
     "mode": "local",
-    "bind": "lan",
+    "bind": "loopback",
     "controlUi": {
       "enabled": true,
       "allowedOrigins": [
@@ -356,6 +350,12 @@
         }
       },
       "openrouter": {
+        "enabled": true
+      },
+      "discord": {
+        "enabled": true
+      },
+      "google": {
         "enabled": true
       }
     }

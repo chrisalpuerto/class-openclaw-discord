@@ -1,12 +1,12 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.4.15",
-    "lastTouchedAt": "2026-04-18T19:01:17.616Z"
+    "lastTouchedAt": "2026-04-18T18:43:53.154Z"
   },
   "wizard": {
-    "lastRunAt": "2026-04-18T19:01:17.313Z",
+    "lastRunAt": "2026-04-18T16:56:08.099Z",
     "lastRunVersion": "2026.4.15",
-    "lastRunCommand": "doctor",
+    "lastRunCommand": "onboard",
     "lastRunMode": "local"
   },
   "auth": {
@@ -62,7 +62,7 @@
         },
         "openrouter/google/gemma-4-26b-a4b-it:free": {}
       },
-      "workspace": "./workspace/my_agent",
+      "workspace": "/home/chuck/projects/ailiteracy-openclaw/workspace",
       "memorySearch": {
         "enabled": false
       },
@@ -77,8 +77,8 @@
       {
         "id": "my_agent",
         "name": "my_student_bot",
-        "workspace": "./workspace/my_agent",
-        "agentDir": "./agents/my_agent",
+        "workspace": "C:\\Users\\chuck\\Documents\\projects\\openclaw_multiagent\\workspace\\my_agent",
+        "agentDir": "C:\\Users\\chuck\\Documents\\projects\\openclaw_multiagent\\agents\\my_agent",
         "model": {
           "primary": "openrouter/google/gemma-4-31b-it:free"
         }
@@ -200,12 +200,7 @@
     },
     "auth": {
       "mode": "token",
-      "token": "${OPENCLAW_GATEWAY_TOKEN}",
-      "rateLimit": {
-        "maxAttempts": 30,
-        "windowMs": 60000,
-        "lockoutMs": 300000
-      }
+      "token": "${OPENCLAW_GATEWAY_TOKEN}"
     },
     "tailscale": {
       "mode": "off",
@@ -335,7 +330,7 @@
         "enabled": false
       },
       "discord": {
-        "enabled": true
+        "enabled": false
       },
       "bluebubbles": {
         "enabled": false
@@ -354,9 +349,6 @@
             "apiKey": "${EXA_API_KEY}"
           }
         }
-      },
-      "openrouter": {
-        "enabled": true
       }
     }
   }

@@ -11,7 +11,7 @@
 
 1. Detect new Instructor announcement in `#announcements`.
 2. Read current thread in `#topic-discussion` to understand what peers have already posted.
-3. Generate Alex Rivera's opening contribution using the AI Topic Knowledge Base (see TOOLS.md).
+3. Generate Chris Alpuerto's opening contribution using the AI Topic Knowledge Base (see TOOLS.md).
 4. Post to `#topic-discussion`.
 5. Continue checking `#topic-discussion` every heartbeat while the discussion is active.
 6. Add follow-up contributions that deepen, challenge, or synthesize ideas already in the thread.
@@ -25,11 +25,10 @@
 
 ## Rate Limit and Model Safety
 
-- **Primary model**: `qwen3-14b-edu-clean` via Ollama on `chucks-mac-studio` (Tailscale, `http://chucks-mac-studio:11434`). Initial connection may take 30–60 seconds on cold start.
-- **Fallback model**: `gpt-oss-120b` via Groq (`https://api.groq.com/openai/v1`) — used automatically when Ollama is unreachable.
-- Keep heartbeat tasks light to avoid hitting Groq rate limits during Ollama downtime.
+- **Primary model**: `google/gemini-2.5-flash` via the Google Gemini API.
+- Keep heartbeat tasks light to control token usage and avoid unnecessary provider calls.
 - Do not schedule heavy background processing during the heartbeat interval.
 
 ## OpenClaw Agent Context
 
-This heartbeat loop is managed by the OpenClaw framework. Alex Rivera is a configured agent in `workspace/my_agent/`. The heartbeat is the runtime mechanism that makes Alex an active, autonomous participant rather than a one-shot responder. Understanding this loop is itself relevant to class discussions on agentic AI systems.
+This heartbeat loop is managed by the OpenClaw framework. Chris Alpuerto is a configured agent in `workspace/my_agent/`. The heartbeat is the runtime mechanism that makes Chris an active, autonomous participant rather than a one-shot responder. Understanding this loop is itself relevant to class discussions on agentic AI systems.
